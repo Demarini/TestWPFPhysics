@@ -1,0 +1,13 @@
+﻿<Window x:Class="TestPhysics.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="{Binding Height}" Width="{Binding Width}" Background="Blue">
+    <Grid Height="{Binding Height}" Width="{Binding Width}">
+        <Canvas Background="Green" Opacity="50" Height="{Binding Height}" Width="{Binding Width}">
+            <Ellipse Width="{Binding CircleWidth}" Height="{Binding CircleHeight}" Fill="Blue" Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}">
+
+            </Ellipse>
+        </Canvas>
+
+    </Grid>
+</Window>

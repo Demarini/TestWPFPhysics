@@ -1,0 +1,13 @@
+c:\users\tlmarin\documents\visual studio 2012\Projects\TestPhysics\TestPhysics\bin\Debug\TestPhysics.exe.config
+C:\Users\tlmarin\Documents\Visual Studio 2012\Projects\TestPhysics\TestPhysics\bin\Debug\TestPhysics.exe
+C:\Users\tlmarin\Documents\Visual Studio 2012\Projects\TestPhysics\TestPhysics\bin\Debug\TestPhysics.pdb
+C:\Users\tlmarin\Documents\Visual Studio 2012\Projects\TestPhysics\TestPhysics\obj\Debug\TestPhysics.csprojResolveAssemblyReference.cache
+C:\Users\tlmarin\Documents\Visual Studio 2012\Projects\TestPhysics\TestPhysics\obj\Debug\View\MainWindow.baml
+C:\Users\tlmarin\Documents\Visual Studio 2012\Projects\TestPhysics\TestPhysics\obj\Debug\View\MainWindow.g.cs
+C:\Users\tlmarin\Documents\Visual Studio 2012\Projects\TestPhysics\TestPhysics\obj\Debug\App.g.cs
+C:\Users\tlmarin\Documents\Visual Studio 2012\Projects\TestPhysics\TestPhysics\obj\Debug\TestPhysics_MarkupCompile.cache
+C:\Users\tlmarin\Documents\Visual Studio 2012\Projects\TestPhysics\TestPhysics\obj\Debug\TestPhysics.g.resources
+C:\Users\tlmarin\Documents\Visual Studio 2012\Projects\TestPhysics\TestPhysics\obj\Debug\TestPhysics.Properties.Resources.resources
+C:\Users\tlmarin\Documents\Visual Studio 2012\Projects\TestPhysics\TestPhysics\obj\Debug\TestPhysics.csproj.GenerateResource.Cache
+C:\Users\tlmarin\Documents\Visual Studio 2012\Projects\TestPhysics\TestPhysics\obj\Debug\TestPhysics.exe
+C:\Users\tlmarin\Documents\Visual Studio 2012\Projects\TestPhysics\TestPhysics\obj\Debug\TestPhysics.pdb
