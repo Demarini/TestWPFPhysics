@@ -11,3 +11,5 @@ C:\Users\tlmarin\Documents\Visual Studio 2012\Projects\TestPhysics\TestPhysics\o
 C:\Users\tlmarin\Documents\Visual Studio 2012\Projects\TestPhysics\TestPhysics\obj\Debug\TestPhysics.csproj.GenerateResource.Cache
 C:\Users\tlmarin\Documents\Visual Studio 2012\Projects\TestPhysics\TestPhysics\obj\Debug\TestPhysics.exe
 C:\Users\tlmarin\Documents\Visual Studio 2012\Projects\TestPhysics\TestPhysics\obj\Debug\TestPhysics.pdb
+C:\Users\tlmarin\Documents\Visual Studio 2012\Projects\TestPhysics\TestPhysics\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\tlmarin\Documents\Visual Studio 2012\Projects\TestPhysics\TestPhysics\bin\Debug\Microsoft.Practices.ServiceLocation.xml

@@ -1,27 +1,33 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Command;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Input;
+using TestPhysics.Controller;
 using TestPhysics.Model;
 
 namespace TestPhysics.ViewModel
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
-        private int x;
-        private int y;
-        private int width;
-        private int height;
-        private int circleWidth;
-        private int circleHeight;
+        private double x;
+        private double y;
+        private double width;
+        private double height;
+        private double circleWidth;
+        private double circleHeight;
         MainWindowModel m;
+        MainWindowController mC;
         public MainWindowViewModel()
         {
             m = new MainWindowModel(this);
+            mC = new MainWindowController(m);
         }
-        public int X
+        public double X
         {
             get
             {
@@ -33,7 +39,7 @@ namespace TestPhysics.ViewModel
                 OnPropertyChanged("X");
             }
         }
-        public int Y
+        public double Y
         {
             get
             {
@@ -45,7 +51,7 @@ namespace TestPhysics.ViewModel
                 OnPropertyChanged("Y");
             }
         }
-        public int Width
+        public double Width
         {
             get
             {
@@ -57,7 +63,7 @@ namespace TestPhysics.ViewModel
                 OnPropertyChanged("Width");
             }
         }
-        public int Height
+        public double Height
         {
             get
             {
@@ -69,7 +75,7 @@ namespace TestPhysics.ViewModel
                 OnPropertyChanged("Height");
             }
         }
-        public int CircleWidth
+        public double CircleWidth
         {
             get
             {
@@ -81,7 +87,7 @@ namespace TestPhysics.ViewModel
                 OnPropertyChanged("CircleWidth");
             }
         }
-        public int CircleHeight
+        public double CircleHeight
         {
             get
             {
@@ -91,6 +97,57 @@ namespace TestPhysics.ViewModel
             {
                 circleHeight = value;
                 OnPropertyChanged("CircleHeight");
+            }
+        }
+        public ICommand MouseDownCommand
+        {
+            get
+            {
+                return new RelayCommand<MouseButtonEventArgs>(e =>
+                {
+                    mC.SetMouseDown(e.GetPosition(MainWindowReference.MainWindowRef.canvas).X, e.GetPosition(MainWindowReference.MainWindowRef.canvas).Y);
+                });
+            }
+        }
+        public ICommand MouseUpCommand
+        {
+            get
+            {
+                return new RelayCommand<MouseButtonEventArgs>(e =>
+                {
+                    mC.SetMouseUp();
+                });
+            }
+        }
+        public ICommand MouseMovedCommand
+        {
+            get
+            {
+                return new RelayCommand<MouseEventArgs>(e =>
+                {
+                    mC.MouseMoved(e.GetPosition(MainWindowReference.MainWindowRef.canvas).X, e.GetPosition(MainWindowReference.MainWindowRef.canvas).Y);
+                });
+            }
+        }
+
+        public ICommand KeyDownCommand
+        {
+            get
+            {
+                return new RelayCommand<KeyEventArgs>(e =>
+                {
+                    mC.KeyDownEvent(e);
+                });
+            }
+        }
+        public ICommand KeyUpCommand
+        {
+            get
+            {
+                return new RelayCommand<KeyEventArgs>(e =>
+                {
+                    mC.KeyUpEvent(e);
+                });
             }
         }
         #region PropertyChangedEvent

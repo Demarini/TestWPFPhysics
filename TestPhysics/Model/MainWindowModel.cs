@@ -11,12 +11,12 @@ namespace TestPhysics.Model
 
     public class MainWindowModel : INotifyPropertyChanged
     {
-        private int x;
-        private int y;
-        private int width;
-        private int height;
-        private int circleWidth;
-        private int circleHeight;
+        private double x;
+        private double y;
+        private double width;
+        private double height;
+        private double circleWidth;
+        private double circleHeight;
         private MainWindowViewModel _mv;
         public MainWindowModel(MainWindowViewModel mv)
         {
@@ -28,7 +28,7 @@ namespace TestPhysics.Model
             X = 900 - 50;
             Y = Height / 2 - CircleHeight / 2;
         }
-        public int X
+        public double X
         {
             get
             {
@@ -41,7 +41,7 @@ namespace TestPhysics.Model
                 
             }
         }
-        public int Y
+        public double Y
         {
             get
             {
@@ -53,7 +53,7 @@ namespace TestPhysics.Model
                 _mv.Y = value;
             }
         }
-        public int Width
+        public double Width
         {
             get
             {
@@ -65,7 +65,7 @@ namespace TestPhysics.Model
                 _mv.Width = value;
             }
         }
-        public int Height
+        public double Height
         {
             get
             {
@@ -77,7 +77,7 @@ namespace TestPhysics.Model
                 _mv.Height = value;
             }
         }
-        public int CircleWidth
+        public double CircleWidth
         {
             get
             {
@@ -89,7 +89,7 @@ namespace TestPhysics.Model
                 _mv.CircleWidth = value;
             }
         }
-        public int CircleHeight
+        public double CircleHeight
         {
             get
             {

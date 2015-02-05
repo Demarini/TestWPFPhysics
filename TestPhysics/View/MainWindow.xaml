@@ -1,13 +1,38 @@
 ﻿<Window x:Class="TestPhysics.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="{Binding Height}" Width="{Binding Width}" Background="Blue">
+        Title="MainWindow" Height="{Binding Height}" Width="{Binding Width}" Background="Black"
+        xmlns:e="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF45">
+    <e:Interaction.Triggers>
+        <e:EventTrigger EventName="PreviewKeyDown">
+            <cmd:EventToCommand Command="{Binding KeyDownCommand}" PassEventArgsToCommand="True" ></cmd:EventToCommand>
+        </e:EventTrigger>
+        <e:EventTrigger EventName="PreviewKeyUp">
+            <cmd:EventToCommand Command="{Binding KeyUpCommand}" PassEventArgsToCommand="True" ></cmd:EventToCommand>
+        </e:EventTrigger>
+    </e:Interaction.Triggers>
     <Grid Height="{Binding Height}" Width="{Binding Width}">
-        <Canvas Background="Green" Opacity="50" Height="{Binding Height}" Width="{Binding Width}">
-            <Ellipse Width="{Binding CircleWidth}" Height="{Binding CircleHeight}" Fill="Blue" Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}">
-
+        
+        <Canvas x:Name="canvas" Background="White" Opacity="50" Height="{Binding Height}" Width="{Binding Width}">
+            <e:Interaction.Triggers>
+                <e:EventTrigger EventName="PreviewMouseMove">
+                    <cmd:EventToCommand Command="{Binding MouseMovedCommand}" PassEventArgsToCommand="True" ></cmd:EventToCommand>
+                </e:EventTrigger>
+                <e:EventTrigger EventName="PreviewKeyDown">
+                    <cmd:EventToCommand Command="{Binding KeyDownCommand}" PassEventArgsToCommand="True" ></cmd:EventToCommand>
+                </e:EventTrigger>
+            </e:Interaction.Triggers>
+            <Ellipse x:Name="ellipse" Width="{Binding CircleWidth}" Height="{Binding CircleHeight}" Fill="Black" Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}">
+                <e:Interaction.Triggers>
+                    <e:EventTrigger EventName="PreviewMouseDown">
+                        <cmd:EventToCommand Command="{Binding MouseDownCommand}" PassEventArgsToCommand="True" ></cmd:EventToCommand>
+                    </e:EventTrigger>
+                    <e:EventTrigger EventName="PreviewMouseUp">
+                        <cmd:EventToCommand Command="{Binding MouseUpCommand}" PassEventArgsToCommand="True" ></cmd:EventToCommand>
+                    </e:EventTrigger>
+                </e:Interaction.Triggers>
             </Ellipse>
         </Canvas>
-
     </Grid>
 </Window>
