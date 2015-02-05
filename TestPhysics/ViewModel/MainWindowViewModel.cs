@@ -16,16 +16,45 @@ namespace TestPhysics.ViewModel
     {
         private double x;
         private double y;
+        private double playerY;
+        private double computerY;
         private double width;
         private double height;
         private double circleWidth;
         private double circleHeight;
         MainWindowModel m;
         MainWindowController mC;
+        public int score1;
+        public int score2;
         public MainWindowViewModel()
         {
             m = new MainWindowModel(this);
             mC = new MainWindowController(m);
+            mC.StartBallMove();
+        }
+        public int Score1
+        {
+            get
+            {
+                return score1;
+            }
+            set
+            {
+                score1 = value;
+                OnPropertyChanged("Score1");
+            }
+        }
+        public int Score2
+        {
+            get
+            {
+                return score2;
+            }
+            set
+            {
+                score2 = value;
+                OnPropertyChanged("Score2");
+            }
         }
         public double X
         {
@@ -49,6 +78,30 @@ namespace TestPhysics.ViewModel
             {
                 y = value;
                 OnPropertyChanged("Y");
+            }
+        }
+        public double PlayerY
+        {
+            get
+            {
+                return playerY;
+            }
+            set
+            {
+                playerY = value;
+                OnPropertyChanged("PlayerY");
+            }
+        }
+        public double ComputerY
+        {
+            get
+            {
+                return computerY;
+            }
+            set
+            {
+                computerY = value;
+                OnPropertyChanged("ComputerY");
             }
         }
         public double Width
@@ -116,6 +169,26 @@ namespace TestPhysics.ViewModel
                 return new RelayCommand<MouseButtonEventArgs>(e =>
                 {
                     mC.SetMouseUp();
+                });
+            }
+        }
+        public ICommand PlayerMouseDownCommand
+        {
+            get
+            {
+                return new RelayCommand<MouseButtonEventArgs>(e =>
+                {
+                    mC.PlayerSetMouseDown(e.GetPosition(MainWindowReference.MainWindowRef.canvas).X, e.GetPosition(MainWindowReference.MainWindowRef.canvas).Y);
+                });
+            }
+        }
+        public ICommand PlayerMouseUpCommand
+        {
+            get
+            {
+                return new RelayCommand<MouseButtonEventArgs>(e =>
+                {
+                    mC.PlayerSetMouseUp();
                 });
             }
         }

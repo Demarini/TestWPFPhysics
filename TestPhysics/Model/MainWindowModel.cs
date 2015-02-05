@@ -15,18 +15,52 @@ namespace TestPhysics.Model
         private double y;
         private double width;
         private double height;
+        private double playerY;
+        private double computerY;
         private double circleWidth;
         private double circleHeight;
+        public double canvasHeight;
+        public double canvasWidth;
         private MainWindowViewModel _mv;
+        public int score1;
+        public int score2;
         public MainWindowModel(MainWindowViewModel mv)
         {
             _mv = mv;
             Width = 900;
             Height = 600;
-            CircleWidth = 50;
-            CircleHeight = 50;
-            X = 900 - 50;
+            CircleWidth = 35;
+            CircleHeight = 35;
+            X = Width/2 - CircleWidth/2;
             Y = Height / 2 - CircleHeight / 2;
+            PlayerY = 250;
+            ComputerY = 250;
+            Score1 = 0;
+            Score2 = 0;
+        }
+        public int Score1
+        {
+            get
+            {
+                return score1;
+            }
+            set
+            {
+                score1 = value;
+                _mv.Score1 = value;
+            }
+        }
+        public int Score2
+        {
+            get
+            {
+                return score2;
+            }
+            set
+            {
+                score2 = value;
+                _mv.Score2 = value;
+            }
         }
         public double X
         {
@@ -51,6 +85,30 @@ namespace TestPhysics.Model
             {
                 y = value;
                 _mv.Y = value;
+            }
+        }
+        public double PlayerY
+        {
+            get
+            {
+                return playerY;
+            }
+            set
+            {
+                playerY = value;
+                _mv.PlayerY = value;
+            }
+        }
+        public double ComputerY
+        {
+            get
+            {
+                return computerY;
+            }
+            set
+            {
+                computerY = value;
+                _mv.ComputerY = value;
             }
         }
         public double Width

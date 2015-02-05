@@ -15,12 +15,18 @@ namespace TestPhysics.Controller
         public string direction = "";
         private MainWindowModel _m;
         private bool isMouseDown = false;
+        private bool playerisMouseDown = false;
         private double oldX;
         private double oldY;
         private double newX;
         private double newY;
+        private double playeroldX;
+        private double playeroldY;
+        private double playernewX;
+        private double playernewY;
         private double xDif;
         private double yDif;
+        private double playeryDif;
         private double currentAngle;
         private bool up;
         private bool down;
@@ -40,6 +46,139 @@ namespace TestPhysics.Controller
             xDif = oldX - _m.X;
             yDif = oldY - _m.Y;
             isMouseDown = true;
+        }
+        public void StartBallMove()
+        {
+            double initialCurrentAngle = new Random().Next(150) - 75;
+            double test = Math.Sin(initialCurrentAngle * Math.PI / 180);
+            double test2 = Math.Cos(initialCurrentAngle * Math.PI / 180);
+            DispatcherTimer timer = new DispatcherTimer();
+            int counter = 0;
+            double interval = 1;
+            bool bounceOnce = false;
+            double distance = 5;
+            int modX = -1;
+            int modY = -1;
+            double bounceMod = 1.1;
+            timer.Tick += delegate
+            {
+                //if (interval >= .5)
+                //{
+                //    interval -= .1;
+                //}
+                //else
+                //{
+                //    bounceMod = 1.2;
+                //}
+                counter++;
+                _m.X += distance * modX * test2;
+                _m.Y += distance * modY * test;
+
+                if (_m.X + _m.CircleWidth >= _m.Width)
+                {
+                    if (!bounceOnce)
+                    {
+                        distance = distance * (bounceMod);
+                        if (modX == -1)
+                        {
+                            modX = 1;
+                        }
+                        else
+                        {
+                            modX = -1;
+                        }
+                    }
+                    bounceOnce = true;
+                }
+                else if (_m.X <= 0)
+                {
+                    if (!bounceOnce)
+                    {
+                        distance = distance * (bounceMod);
+                        if (modX == -1)
+                        {
+                            modX = 1;
+                        }
+                        else
+                        {
+                            modX = -1;
+                        }
+                    }
+                    bounceOnce = true;
+                    counter = 0;
+                }
+                else if (_m.Y + _m.CircleHeight >= _m.Height)
+                {
+                    if (!bounceOnce)
+                    {
+                        distance = distance * (bounceMod);
+                        if (modY == -1)
+                        {
+                            modY = 1;
+                        }
+                        else
+                        {
+                            modY = -1;
+                        }
+                    }
+                    bounceOnce = true;
+
+                }
+                else if (_m.Y <= 0)
+                {
+                    if (!bounceOnce)
+                    {
+                        distance = distance * (bounceMod);
+                        if (modY == -1)
+                        {
+                            modY = 1;
+                        }
+                        else
+                        {
+                            modY = -1;
+                        }
+                    }
+                    bounceOnce = true;
+                }
+                else if (_m.X <= 40 && (_m.Y > _m.PlayerY && _m.Y < _m.PlayerY + 100))
+                {
+                    if (!bounceOnce)
+                    {
+                        distance = distance * (bounceMod);
+                        if (modX == -1)
+                        {
+                            modX = 1;
+                        }
+                        else
+                        {
+                            modX = -1;
+                        }
+                    }
+                    bounceOnce = true;
+                }
+                else if (_m.X >=860 && (_m.Y > _m.ComputerY && _m.Y < _m.ComputerY + 100))
+                {
+                    if (!bounceOnce)
+                    {
+                        distance = distance * (bounceMod);
+                        if (modX == -1)
+                        {
+                            modX = 1;
+                        }
+                        else
+                        {
+                            modX = -1;
+                        }
+                    }
+                    bounceOnce = true;
+                }
+                else
+                {
+                    bounceOnce = false;
+                }
+            };
+            timer.Interval = TimeSpan.FromMilliseconds(interval);
+            timer.Start();
         }
         public void SetMouseUp()
         {
@@ -66,7 +205,6 @@ namespace TestPhysics.Controller
                         if (modX == -1)
                         {
                             modX = 1;
-
                         }
                         else
                         {
@@ -130,7 +268,7 @@ namespace TestPhysics.Controller
                     bounceOnce = false;
                 }
             };
-            timer.Interval = TimeSpan.FromMilliseconds(1);
+            timer.Interval = TimeSpan.FromMilliseconds(.5);
             timer.Start();
             //new Thread(() =>
             //{
@@ -153,6 +291,7 @@ namespace TestPhysics.Controller
                 _m.X = x - xDif;
                 _m.Y = y - yDif;
             }
+            _m.PlayerY = y - 50;
         }
         public void KeyDownEvent(KeyEventArgs e)
         {
@@ -231,6 +370,15 @@ namespace TestPhysics.Controller
             {
                 right = false;
             }
+        }
+        public void PlayerSetMouseDown(double x, double y)
+        {
+            playeryDif = y - _m.PlayerY;
+            playerisMouseDown = true;
+        }
+        public void PlayerSetMouseUp()
+        {
+            playerisMouseDown = false;
         }
         public double CalculateAngle(double x1, double x2, double y1, double y2)
         {
