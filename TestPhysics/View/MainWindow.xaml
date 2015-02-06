@@ -43,8 +43,8 @@
                 </e:Interaction.Triggers>
             </Rectangle>
             <Rectangle Width ="30" Height="100" Canvas.Left="860" Canvas.Top="{Binding ComputerY}" Fill="Black"></Rectangle>
-            <TextBlock Canvas.Left="300" Canvas.Top="150"  FontSize="200" Text="{Binding Score1}" Foreground="Black" Opacity="20"></TextBlock>
-            <TextBlock Canvas.Left="600" Canvas.Top="150"  FontSize="200" Text="{Binding Score2}" Foreground="Black" Opacity="20"></TextBlock>
+            <TextBlock Canvas.Left="300" Canvas.Top="150"  FontSize="200" Text="{Binding Score1}" Foreground="Black" Opacity="10"></TextBlock>
+            <TextBlock Canvas.Left="600" Canvas.Top="150"  FontSize="200" Text="{Binding Score2}" Foreground="Black" Opacity="10"></TextBlock>
         </Canvas>
         
     </Grid>

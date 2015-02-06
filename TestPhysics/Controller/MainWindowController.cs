@@ -62,50 +62,78 @@ namespace TestPhysics.Controller
             double bounceMod = 1.1;
             timer.Tick += delegate
             {
-                //if (interval >= .5)
-                //{
-                //    interval -= .1;
-                //}
-                //else
-                //{
-                //    bounceMod = 1.2;
-                //}
+                if (interval >= .5)
+                {
+                    interval -= .1;
+                }
+                else
+                {
+                    bounceMod = 1.1;
+                }
                 counter++;
                 _m.X += distance * modX * test2;
                 _m.Y += distance * modY * test;
 
                 if (_m.X + _m.CircleWidth >= _m.Width)
                 {
-                    if (!bounceOnce)
-                    {
-                        distance = distance * (bounceMod);
-                        if (modX == -1)
-                        {
-                            modX = 1;
-                        }
-                        else
-                        {
-                            modX = -1;
-                        }
-                    }
-                    bounceOnce = true;
+                    _m.Score1++;
+                    _m.X = _m.Width / 2 - _m.CircleWidth / 2;
+                    _m.Y = _m.Height / 2 - _m.CircleHeight / 2;
+                    initialCurrentAngle = new Random().Next(150) - 75;
+                    test = Math.Sin(initialCurrentAngle * Math.PI / 180);
+                    test2 = Math.Cos(initialCurrentAngle * Math.PI / 180);
+                    timer = new DispatcherTimer();
+                    counter = 0;
+                    interval = 1;
+                    bounceOnce = false;
+                    distance = 5;
+                    modX = -1;
+                    modY = -1;
+                    bounceMod = 1.1;
+                    //if (!bounceOnce)
+                    //{
+                    //    distance = distance * (bounceMod);
+                    //    if (modX == -1)
+                    //    {
+                    //        modX = 1;
+                    //    }
+                    //    else
+                    //    {
+                    //        modX = -1;
+                    //    }
+                    //}
+                    //bounceOnce = true;
                 }
                 else if (_m.X <= 0)
                 {
-                    if (!bounceOnce)
-                    {
-                        distance = distance * (bounceMod);
-                        if (modX == -1)
-                        {
-                            modX = 1;
-                        }
-                        else
-                        {
-                            modX = -1;
-                        }
-                    }
-                    bounceOnce = true;
+                    //if (!bounceOnce)
+                    //{
+                    //    distance = distance * (bounceMod);
+                    //    if (modX == -1)
+                    //    {
+                    //        modX = 1;
+                    //    }
+                    //    else
+                    //    {
+                    //        modX = -1;
+                    //    }
+                    //}
+                    //bounceOnce = true;
+                    //counter = 0;
+                    _m.Score2++;
+                    _m.X = _m.Width / 2 - _m.CircleWidth / 2;
+                    _m.Y = _m.Height / 2 - _m.CircleHeight / 2;
+                    initialCurrentAngle = new Random().Next(150) - 75;
+                    test = Math.Sin(initialCurrentAngle * Math.PI / 180);
+                    test2 = Math.Cos(initialCurrentAngle * Math.PI / 180);
+                    timer = new DispatcherTimer();
                     counter = 0;
+                    interval = 1;
+                    bounceOnce = false;
+                    distance = 5;
+                    modX = -1;
+                    modY = -1;
+                    bounceMod = 1.1;
                 }
                 else if (_m.Y + _m.CircleHeight >= _m.Height)
                 {
@@ -140,7 +168,7 @@ namespace TestPhysics.Controller
                     }
                     bounceOnce = true;
                 }
-                else if (_m.X <= 40 && (_m.Y > _m.PlayerY && _m.Y < _m.PlayerY + 100))
+                else if (_m.X <= 40 && (_m.Y >= _m.PlayerY && _m.Y <= _m.PlayerY + 100))
                 {
                     if (!bounceOnce)
                     {
@@ -156,7 +184,7 @@ namespace TestPhysics.Controller
                     }
                     bounceOnce = true;
                 }
-                else if (_m.X >=860 && (_m.Y > _m.ComputerY && _m.Y < _m.ComputerY + 100))
+                else if (_m.X + _m.CircleWidth >= _m.Width - 10 - 30 && (_m.Y >= _m.ComputerY && _m.Y <= _m.ComputerY + 100))
                 {
                     if (!bounceOnce)
                     {
@@ -292,6 +320,7 @@ namespace TestPhysics.Controller
                 _m.Y = y - yDif;
             }
             _m.PlayerY = y - 50;
+            _m.ComputerY = y - 50;
         }
         public void KeyDownEvent(KeyEventArgs e)
         {
